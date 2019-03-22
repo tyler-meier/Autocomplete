@@ -1,0 +1,12 @@
+Your name
+Your netid
+
+Copy paste results from running benchmark
+
+Once for each of three files (see code)
+
+String fname = "data/threeletterwords.txt"; 
+		//fname = "data/words-333333.txt";
+		//fname = "data/alexa.txt";
+		
+more questions here		
