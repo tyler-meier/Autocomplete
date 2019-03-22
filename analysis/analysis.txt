@@ -2,11 +2,40 @@ Your name
 Your netid
 
 Copy paste results from running benchmark
-
-Once for each of three files (see code)
+for each of three files (see code)
 
 String fname = "data/threeletterwords.txt"; 
-		//fname = "data/words-333333.txt";
-		//fname = "data/alexa.txt";
+
+(paste here)
+
+
+		fname = "data/words-333333.txt";
 		
-more questions here		
+			
+(paste here)
+
+
+		fname = "data/alexa.txt";
+		
+(paste here)
+		
+--------------------------------
+
+Paste results for # matches = 10000 with alexa.txt
+
+(paste here)
+
+Explain results: does number of matches have an effect
+on the runtime?	
+
+
+--------------------------------
+
+Explain why the last for loop in BruteAutocomplete.topMatches uses a LinkedList 
+(and not an ArrayList) AND why the PriorityQueue uses Term.WeightOrder to get 
+the top k heaviest matches -- rather than using Term.ReverseWeightOrder.
+
+--------------------------------
+
+Explain why HashListAutocomplete uses more memory than the 
+other Autocomplete implementations. Be brief.
