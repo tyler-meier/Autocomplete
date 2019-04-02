@@ -121,9 +121,12 @@ public class Term implements Comparable<Term> {
 	 */
 	public static class ReverseWeightOrder implements Comparator<Term> {
 		public int compare(Term v, Term w) {
-			// TODO: Implement compare
-			
-			
+			if (v.getWeight() < w.getWeight()) {
+				return 13;
+			}
+			if (v.getWeight() > w.getWeight()) {
+				return -13;
+			}
 			return 0;
 		}
 	}
@@ -135,8 +138,12 @@ public class Term implements Comparable<Term> {
 	 */
 	public static class WeightOrder implements Comparator<Term> {
 		public int compare(Term v, Term w) {
-			//TODO: Implement compare
-			
+			if (v.getWeight() < w.getWeight()) {
+				return -13;
+			}
+			if (v.getWeight() > w.getWeight()) {
+				return 13;
+			}
 			return 0;
 		}
 	}
