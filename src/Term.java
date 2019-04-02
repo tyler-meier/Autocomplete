@@ -33,6 +33,12 @@ public class Term implements Comparable<Term> {
 	
 		myWord = word;
 		myWeight = weight;
+		if (weight < 0) {
+			throw new IllegalArgumentException("negative weight "+weight);
+		}
+		if (word == null) {
+			throw new NullPointerException("null word "+word);
+		}
 	}
 	
 	/**
