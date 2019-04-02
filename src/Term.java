@@ -111,44 +111,29 @@ public class Term implements Comparable<Term> {
 			int wlen = w.getWord().length();
 			int fin = myPrefixSize;
 			
-			if (vlen < fin) {
-				fin  = vlen;
-			}
-			
-			if (wlen < fin) {
-				fin = wlen;
-			}
+			if (vlen < fin) fin  = vlen;	
+			if (wlen < fin) fin = wlen;
 			
 			for (int k = 0; k < fin; k++) {
 				char vind = v.getWord().charAt(k);
 				char wind = w.getWord().charAt(k);
 				
-				if (vind < wind) {
-					return -13;
-				}
-				if (vind > wind) {
-					return 13;
-				}
+				if (vind < wind) return -13;
+				if (vind > wind) return 13;			
 			}
+			
 			if (vlen < myPrefixSize) {
-				if (vlen < wlen) {
-					return -13;
-				}
-				if (vlen > wlen) {
-					return 13;
-				}
+				if (vlen < wlen) return -13;
+				if (vlen > wlen) return 13;
 			}
+			
 			if (wlen < myPrefixSize) {
-				if (wlen < vlen) {
-					return 13;
-				}
-				if (wlen > vlen) {
-					return -13;
-				}
+				if (wlen < vlen) return 13;
+				if (wlen > vlen) return -13;
 			}	
+			
 			return 0;
 		}
-	
 	}
 
 	/**
@@ -158,12 +143,10 @@ public class Term implements Comparable<Term> {
 	 */
 	public static class ReverseWeightOrder implements Comparator<Term> {
 		public int compare(Term v, Term w) {
-			if (v.getWeight() < w.getWeight()) {
-				return 13;
-			}
-			if (v.getWeight() > w.getWeight()) {
-				return -13;
-			}
+			
+			if (v.getWeight() < w.getWeight()) return 13;
+			if (v.getWeight() > w.getWeight()) return -13;
+			
 			return 0;
 		}
 	}
@@ -175,12 +158,10 @@ public class Term implements Comparable<Term> {
 	 */
 	public static class WeightOrder implements Comparator<Term> {
 		public int compare(Term v, Term w) {
-			if (v.getWeight() < w.getWeight()) {
-				return -13;
-			}
-			if (v.getWeight() > w.getWeight()) {
-				return 13;
-			}
+			
+			if (v.getWeight() < w.getWeight()) return -13;			
+			if (v.getWeight() > w.getWeight()) return 13;
+
 			return 0;
 		}
 	}
