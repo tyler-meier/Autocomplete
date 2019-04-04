@@ -110,7 +110,7 @@ public class BinarySearchAutocomplete implements Autocompletor {
 		
 		PriorityQueue<Term> pq = 
 				new PriorityQueue<Term>(new Term.WeightOrder());
-		if (first == -1) {
+		if (first == -1 && last == -1 || k == 0) {
 			return new ArrayList<Term>();
 		}
 		for (int i = first; i <= last; i++) {
