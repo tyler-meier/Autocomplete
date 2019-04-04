@@ -105,17 +105,20 @@ public class BinarySearchAutocomplete implements Autocompletor {
 			throw new IllegalArgumentException("Illegal value of k:"+k);
 		}
 		
-		// maintain pq of size k
+		int first = firstIndexOf(myTerms, new Term (prefix, 0), new Term.PrefixOrder(prefix.length()));
+		int last = lastIndexOf(myTerms, new Term (prefix, 0), new Term.PrefixOrder(prefix.length()));
+		
 		PriorityQueue<Term> pq = 
 				new PriorityQueue<Term>(new Term.WeightOrder());
-		for (Term t : myTerms) {
-			if (!t.getWord().startsWith(prefix))
-				continue;
+		if (first == -1) {
+			return new ArrayList<Term>();
+		}
+		for (int i = first; i <= last; i++) {
 			if (pq.size() < k) {
-				pq.add(t);
-			} else if (pq.peek().getWeight() < t.getWeight()) {
+				pq.add(myTerms[i]);
+			} else if (pq.peek().getWeight() < myTerms[i].getWeight()) {
 				pq.remove();
-				pq.add(t);
+				pq.add(myTerms[i]);
 			}
 		}
 		int numResults = Math.min(k, pq.size());
@@ -125,12 +128,7 @@ public class BinarySearchAutocomplete implements Autocompletor {
 		}
 		return ret;
 	}
-		/**Term dummy = new Term(prefix,0);
-		Term.PrefixOrder comp = new Term.PrefixOrder(prefix.length());
-		int first = firstIndexOf(myTerms, dummy, comp);
-		int last = lastIndexOf(myTerms, dummy, comp);
-		return new ArrayList<>();
-	*/
+
 
 	@Override
 	public void initialize(String[] terms, double[] weights) {
