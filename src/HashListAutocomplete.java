@@ -10,7 +10,6 @@ public class HashListAutocomplete implements Autocompletor {
 		if (terms == null || weights == null) {
 			throw new NullPointerException("One or more arguments null");
 		}
-
 		if (terms.length != weights.length) {
 			throw new IllegalArgumentException("terms and weights are not the same length");
 		}
@@ -19,8 +18,11 @@ public class HashListAutocomplete implements Autocompletor {
 
 	@Override
 	public List<Term> topMatches(String prefix, int k) {
-		
-		return null;
+		List<Term> all = myMap.get(prefix);
+		if (all == null) {
+			return new ArrayList<>();
+		}
+		return all.subList(0, Math.min(k, all.size()));
 	}
 
 	@Override
@@ -45,7 +47,6 @@ public class HashListAutocomplete implements Autocompletor {
 		for(String key : myMap.keySet()) {
 			Collections.sort(myMap.get(key), rwo);
 		}
-		
 	}
 
 	@Override
